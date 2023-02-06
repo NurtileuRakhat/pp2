@@ -6,7 +6,7 @@ class Account:
         return ("Account owner: {} \nAccount balance: {}").format(self.o, self.b )
     def deposit(self, deposit):
         self.b = self.b + deposit
-        print("+ {} \nYour current balance is {} tenge from AO KBTU".format(deposit,self.b))
+        print("+ {} tenge from AO KBTU\nYour current balance is {}".format(deposit,self.b))
     def withdraw(self, w):
             if w > self.b:
                 print("Error, insufficient funds \nYour current balance is {}".format(self.b))
