@@ -9,7 +9,7 @@ class Rectangle(Shape):
         self.l = length
         self.w = width
     def area(self):
-        return int((self.l * self.w)/2) 
+        return self.l * self.w
 x = int(input())
 y = int(input())
 p = Rectangle(x,y)
