@@ -115,4 +115,5 @@ def average_imdb_category(movies, category):
 # result: ['The Choice', 'Colonia', 'Love', 'Bride Wars', 'We Two']
 # print(Average_imdb(movies))
 # result: 6.486666666666667
-print(average_imdb_category(movies, "Thriller"))
+# print(average_imdb_category(movies, "Thriller"))
+# result: 5.6
