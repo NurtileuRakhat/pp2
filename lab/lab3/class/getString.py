@@ -1,5 +1,9 @@
-class getString:
-    a = input()
-p = getString()
-class printString:
-    print(p.a.upper())
+class String:
+    def getString(self):
+        self.str = input()
+    def printString(self):   
+        print(self.str.upper())
+
+p = String()
+p.getString()
+p.printString()
