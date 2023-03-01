@@ -1,0 +1,5 @@
+import re
+def program(str):
+    s = re.split("\1",str)
+    print(s)
+program("KbtuPython")
