@@ -1,2 +1,2 @@
-t = tuple(map(int, input().split()))
-print(all(t))
+def tuple_elements(a):
+    return all(a)
