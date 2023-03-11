@@ -5,11 +5,13 @@ w = 600
 h = 400
 angle1 = 0
 angle2 = 0
-print(pygame.font.get_fonts())
+
 pygame.mixer.music.load("sound\\background.mp3")
 pygame.mixer.music.play(-1)
+
 f_sys = pygame.font.SysFont('twcen',30)
 sc = pygame.display.set_mode((w,h),pygame.RESIZABLE)
+
 pygame.display.set_caption("simple clock")
 pygame.display.set_icon(pygame.image.load("image\icon.bmp"))
 
