@@ -16,7 +16,8 @@ def load_music():
     for files in list_of_music:
         if files.endswith('.mp3'):
             songs.append(files) 
-    return songs
+    return songs  
+
 musics = load_music()
 
 sc = pygame.display.set_mode(( w , h))
