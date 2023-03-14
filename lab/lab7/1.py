@@ -19,7 +19,6 @@ white = (255,255,255)
 sc.fill(white)
 
 mickey_surf = pygame.image.load("image\mickeyclock.jpg")
-
 left_hand_surf = pygame.image.load("image\left_hand.png").convert_alpha()
 right_hand_surf = pygame.image.load("image\\right_hand.png").convert_alpha()
 
@@ -45,9 +44,6 @@ while 1:
     mickeyrect = mickey_surf.get_rect(center = (w//2,h//2))
     left_hand_rect = left_hand_surf1.get_rect(center = (w//2,h//2))
     right_hand_rect = right_hand_surf1.get_rect(center = (w//2,h//2))
-    
-    left_hand_surf1.set_colorkey((0,0,0))
-    right_hand_surf1.set_colorkey((0,0,0))
     
     sc.blit(mickey_surf,mickeyrect)
     sc.blit(left_hand_surf1,left_hand_rect)
