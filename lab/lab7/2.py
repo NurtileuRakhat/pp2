@@ -26,10 +26,6 @@ pygame.display.set_icon(pygame.image.load(r"C:\Users\Nurtileu\Desktop\git\lab\la
 
 surf_1 = pygame.Surface((340, 55))
 
-# image = pygame.image.load(r'C:\Users\Nurtileu\Desktop\git\lab\lab7\image\image.png').convert_alpha()
-# image = pygame.transform.scale(image,(image.get_width()//2,image.get_height()//2))
-# image_rect = image.get_rect(center = (w//2,h//2))
-
 icon_play = pygame.image.load(r'C:\\Users\\Nurtileu\Desktop\\git\\lab\\lab7\\image\\1-18309_big-image-media-player-buttons-png (6).png').convert_alpha()
 icon_stop = pygame.image.load(r'C:\\Users\\Nurtileu\Desktop\\git\\lab\\lab7\\image\\1-18309_big-image-media-player-buttons-png (3).png').convert_alpha()
 icon_next = pygame.image.load(r'C:\\Users\\Nurtileu\Desktop\\git\\lab\\lab7\\image\\1-18309_big-image-media-player-buttons-png (5).png').convert_alpha()
@@ -52,12 +48,13 @@ icon_play_rect = icon_play.get_rect(center = (w//2,h//1.2))
 icon_stop_rect = icon_stop.get_rect(center = (w//2,h//1.2))
 icon_next_rect = icon_next.get_rect(center = (290,h//1.2))
 icon_previous_rect = icon_previous.get_rect(center = (110,h//1.2))
-
+song_end1 = False
+song_end = pygame.USEREVENT
+pygame.mixer.music.set_endevent(song_end)
 clock = pygame.time.Clock()
 x = 33
 while 1:
     sc.fill((0,0,0))
-    # sc.blit(image,image_rect)
     sc.blit(icon_play,icon_play_rect)
     sc.blit(icon_next,icon_next_rect)
     sc.blit(icon_previous,icon_previous_rect)
@@ -71,7 +68,7 @@ while 1:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_p:
                 begin = True
-                music = musics[0]
+                music = musics[i]
                 i = musics.index(music)
                 pygame.mixer.music.load(f'music\{music}')
                 pygame.mixer.music.play()
@@ -97,7 +94,8 @@ while 1:
                     icon += 1
                 pygame.mixer.music.load(f'music\{musics[i]}')
                 pygame.mixer.music.play()
-
+                a = pygame.mixer.Sound(f'music\{musics[i]}')
+               
             if event.key == pygame.K_LEFT and is_sing:
                 x = 33
                 if i == 0:
@@ -120,9 +118,20 @@ while 1:
         elif event.type == pygame.KEYUP:
             if event.key in [pygame.K_UP,pygame.K_DOWN]:
                 volumeUP , volumeDown = False , False
+        if event.type == song_end:
+            song_end1 = 1
 
     font = pygame.font.SysFont('Tahoma', 16, True) 
-
+    
+    if song_end1:
+        if i == 0:
+            i = len(musics) - 1
+        else:
+            i -= 1
+        song_end1 = False
+        pygame.mixer.music.load(f'music\{musics[i]}')
+        pygame.mixer.music.play()
+    
     if stop:
         sc.fill((0,0,0))
         sc.blit(icon_next,icon_next_rect)
