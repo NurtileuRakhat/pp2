@@ -10,7 +10,7 @@ current = config.cursor()
 arr = []
 # вставляем данные в телефонную книгу загружая их из csv-файла
 with open('1.csv') as f:
-    reader = csv.reader(f, delimiter=',')
+    reader = csv.reader(f, delimiter=';')
 
     for row in reader:
         row[0] = int(row[0])
