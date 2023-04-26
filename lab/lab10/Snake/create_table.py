@@ -1,5 +1,5 @@
 import psycopg2
-# создаем таблицу телефонной книги
+
 config = psycopg2.connect(
     host='localhost', 
     database='sampledb',
