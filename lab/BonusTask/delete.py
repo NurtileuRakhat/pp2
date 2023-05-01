@@ -13,11 +13,11 @@ del_data = del_data.lower()
 temp = input(f'Which {del_data} do you want to delete?: ')
 if del_data == 'id':
     sql = '''
-        DELETE FROM bot_PP2 WHERE id = %s RETURNING *
+        DELETE FROM test WHERE id = %s RETURNING *
     '''
 elif del_data == 'username':
     sql = '''
-        DELETE FROM bot_PP2 WHERE username = %s RETURNING *
+        DELETE FROM test WHERE username = %s RETURNING *
     '''
 current.execute(sql, (temp,))
 config.commit()

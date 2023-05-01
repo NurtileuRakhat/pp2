@@ -9,13 +9,13 @@ config = psycopg2.connect(
 
 current = config.cursor()
 sql = '''
-        CREATE TABLE bot_PP2(
-            id INTEGER PRIMARY KEY,
+        CREATE TABLE test(
+            id VARCHAR(),
             username VARCHAR(100),
             us_name VARCHAR(100),
             us_sname VARCHAR(100),
             phoneNumber VARCHAR(12),
-            chatid INT,
+            chatid VARCHAR,
             UNIQUE(chatid)
     );
 ''' 

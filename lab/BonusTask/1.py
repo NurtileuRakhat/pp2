@@ -33,7 +33,7 @@ def build_menu(buttons, n_cols,
     return menu
 
 def insert_data(id:int, username:str, us_name:str,us_sname:str,phonenumber:str,chatid:int):
-	sql = '''INSERT INTO bot_PP2(id, username, us_name,us_sname,phonenumber,chatid) VALUES (%s, %s, %s, %s, %s, %s)'''
+	sql = '''INSERT INTO test(id, username, us_name,us_sname,phonenumber,chatid) VALUES (%s, %s, %s, %s, %s, %s)'''
 	cursor.execute(sql, (id, username, us_name,us_sname,phonenumber,chatid))
 	config.commit()
 
@@ -79,7 +79,7 @@ def callback_handler(call):
         
     elif call.data == 'all_contact':
         # Table data query
-        cursor.execute("SELECT us_name, phonenumber FROM bot_PP2;")
+        cursor.execute("SELECT us_name, phonenumber FROM test;")
         rows = cursor.fetchall()
  
         # Data processing and message formation
