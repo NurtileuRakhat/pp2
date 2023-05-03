@@ -1,4 +1,5 @@
 import psycopg2
+import re
 
 def connect():
   config = psycopg2.connect(
@@ -53,7 +54,7 @@ def insert_or_update_user(id,name, number):
     cursor.close()
     config.close()
 
-def insert_users(names, phones):
+def insert_users(id,names, phones):
   incorrect_phones = []
   # Connect to the database
   config,cursor = connect()
@@ -61,7 +62,7 @@ def insert_users(names, phones):
   for name, phone in zip(names, phones):
       if is_valid_phone(phone):
           # insert user into database
-          cursor.execute("INSERT INTO users (name, phone) VALUES (%s, %s)", (name, phone))
+          cursor.execute("INSERT INTO phonebook (id,name, number) VALUES (%s,%s, %s)", (id ,name, phone))
       else:
           # add incorrect phone to list
           incorrect_phones.append((name, phone))
@@ -73,9 +74,19 @@ def insert_users(names, phones):
   return incorrect_phones
 
 def is_valid_phone(phone):
-  # check if phone number has correct format
-  # implement your own logic here
-  pass
+    # check if phone number has correct format
+    x = re.search(r'^87\d{9}', phone)
+    y = re.search(r'^\+77\d{9}', phone)
+    z = re.search(r'^7\d{9}', phone)
+    if x is not None and phone == x.group():
+        return True
+    elif y is not None and phone == y.group():
+        return True
+    elif z is not None and phone == z.group():
+        return True
+    else:
+        return False
+
 
 def query_with_pagination(table_name, limit, offset):
     # Connect to the database
@@ -111,8 +122,8 @@ def delete_user_by_username_or_phone(name=None, number=None):
 # # Example usage
 # print(query_with_pagination('phonebook',10,2))
 # names = ["123", "123", "123"]
-# phones = ["7777777777777777777777777", "7777777777777777777777777", "7777777777777777777777777"]
-# incorrect_phones = insert_users(names, phones)
+# phones = ["87076039179", "7777777777777777777777777", "7777777777777777777777777"]
+# incorrect_phones = insert_users(5,names, phones)
 # print("Incorrect phones:", incorrect_phones)
 # insert_or_update_user(4,'Nurtileu1', '87076039456')
 # return_all_record()
